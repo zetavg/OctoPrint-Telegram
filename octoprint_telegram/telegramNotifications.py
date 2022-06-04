@@ -98,7 +98,16 @@ telegramMsgDict = {
         "markup": "off",
         "no_setting": True,
     },
-    "StatusPrinting": {"bind_msg": "ZChange", "no_setting": True},
+    "StatusPrinting": {
+        "text": gettext(
+            "Printing at Z={z}.\nBed {bed_temp}/{bed_target}, Extruder {e1_temp}/{e1_target}.\n{time_done}, {percent}% done, {time_left} remaining.\nCompleted time {time_finish}."
+        ),
+        "image": True,
+        "silent": False,
+        "gif": False,
+        "combined": True,
+        "markup": "off",
+    },
     "plugin_octolapse_movie_done": {"bind_msg": "MovieDone", "no_setting": True},
     "plugin_pause_for_user_event_notify": {
         "text": "{emo:warning} "
@@ -442,7 +451,7 @@ class TMSG:
                     "Exception on getting movie for MovieDone: " + str(ex)
                 )
 
-            
+
             if "user" in payload:
                 user = payload["user"]
                 if user == None:
